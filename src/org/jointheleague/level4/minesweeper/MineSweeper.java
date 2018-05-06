@@ -47,6 +47,7 @@ public class MineSweeper {
     void initializeMines(int firstCellCol, int firstCellRow) {
         // TODO fill in
         // Hint, use `Optional.of(...)` to create a non-empty `Optional`.
+    		
     }
     
     /**
@@ -58,8 +59,15 @@ public class MineSweeper {
      * @return The number of neighboring cells that are mines (0-8).
      */
     Integer getNeighboringMinesCount(int col, int row) {
-        // TODO fill in
-        return null;
+        int count = 0;
+        for(int x = row - 1; x <= row + 1;x++) {
+        		for(int y = col - 1; y <= col + 1; y++) {
+        			if(mines.get()[x][y] == true) {
+        				count++;
+        			}
+        		}
+        }
+        return count;
     }
     
     /**
@@ -70,7 +78,8 @@ public class MineSweeper {
      * @param unused Just here so that method can be passed as ActionListener.
      */
     void resetGame(Object unused) {
-        // TODO fill in
+        mines = Optional.empty();
+        
     }
     
     private void createAndShowFrame() {
